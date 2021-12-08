@@ -12,25 +12,24 @@ namespace ServiceReservasi_020
     public interface IService1
     {
         [OperationContract]
-        string pemesanan(string IDPemesanan, string NamaCustomer, string NoTelepon, int JumlahPemesanan, string IdLokasi); //Method //proses input data
+        string pemesanan(string IDReservasi, string NamaCustomer, string NoTelepon, int JumlahPemesanan, string IDLokasi); //method proses input data
         [OperationContract]
-        string editPemesanan(string IdPemesanan, string NamaCustomer);
+        string editPemesanan(string IDReservasi, string NamaCustomer, string No_telepon);
         [OperationContract]
-        string deletePemesanan(string idPemesanan);
+        string deletePemesanan(string IDReservasi);
         [OperationContract]
-        List<CekLokasi> ReviewLokasi(); //menampilkan data yang ada didata base (select all)
+        List<CekLokasi> ReviewLokasi();//menampilkan data yang ada di database (select all) dengan menampilkan isi dari yang ada contract
         [OperationContract]
-        List<DetailLokasi> DetailLokasi(); //menampilkan detail lokasi
+        List<DetailLokasi> DetailLokasi();//menampilkan detail lokasi
         [OperationContract]
         List<Pemesanan> Pemesanan();
     }
 
-    
     [DataContract]
-    public class CekLokasi //daftar lokasi nongrong
+    public class CekLokasi //daftar lokasi
     {
         [DataMember]
-        public string IDLokasi { get; set; } //variabel dari public class
+        public string IDLokasi { get; set; }//variabel dari public class
         [DataMember]
         public string NamaLokasi { get; set; }
         [DataMember]
@@ -54,7 +53,7 @@ namespace ServiceReservasi_020
     public class Pemesanan //create
     {
         [DataMember]
-        public string IDPemesanan { get; set; }
+        public string IDReservasi { get; set; }
         [DataMember]
         public string NamaCustomer { get; set; } //method
         [DataMember]
@@ -62,6 +61,6 @@ namespace ServiceReservasi_020
         [DataMember]
         public int JumlahPemesanan { get; set; }
         [DataMember]
-        public string IDLokasi { get; set; }
+        public string Lokasi { get; set; }
     }
 }
